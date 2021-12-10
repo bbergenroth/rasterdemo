@@ -5,7 +5,7 @@ services:
       - ./cmd/.env
     volumes:
       - ./cmd/bin:/opt/bin
-      - ../../tmp/:/data
+      - ./tmp/:/data
     command: tail -f /dev/null
   db:
     image: postgis/postgis:latest

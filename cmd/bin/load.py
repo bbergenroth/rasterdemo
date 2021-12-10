@@ -13,7 +13,7 @@ def main(args):
         [
             "raster2pgsql",
             "-Y",
-            "-a",
+            "-I"
             "-s",
             args.srs,
             "-t",
@@ -84,6 +84,11 @@ if __name__ == "__main__":
         "--srs",
         help="EPSG SRID of supplied raster",
     )
+    parser.add_argument(
+        "-x",
+        "--tile",
+        help="The tile size to use",
+    )
     args = parser.parse_args()
     args.password = os.environ["PGPASSWORD"]
 
@@ -94,7 +99,7 @@ if __name__ == "__main__":
         and args.port
         and args.file
         and args.table
-        and args.tilesize
+        and args.tile
         and args.srs
     ):
         exit(parser.print_usage())
