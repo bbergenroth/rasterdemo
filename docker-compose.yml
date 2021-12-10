@@ -1,0 +1,20 @@
+services:
+  cmd:
+    build: ./cmd
+    env_file:
+      - ./cmd/.env
+    volumes:
+      - ./cmd/bin:/opt/bin
+      - ../../tmp/:/data
+    command: tail -f /dev/null
+  db:
+    image: postgis/postgis:latest
+    env_file:
+      - ./db/.env
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/scripts:/docker-entrypoint-initdb.d
+      - pgdata:/var/lib/postgres/data
+volumes:
+  pgdata:
