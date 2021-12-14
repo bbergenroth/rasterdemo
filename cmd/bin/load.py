@@ -13,7 +13,7 @@ def main(args):
         [
             "raster2pgsql",
             "-Y",
-            "-I"
+            "-I",
             "-s",
             args.srs,
             "-t",
