@@ -8,7 +8,10 @@ insert into boundaries (name, geometry) values ('Berkeley', '0103000020E61000000
 
 create index boundaries_geometry_idx on boundaries using gist(geometry);
 
-create or replace function public.nlcd(z integer, x integer, y integer) returns bytea as
+create or replace function public.nlcd10(z integer, x integer, y integer) returns bytea
+ language 'plpgsql'
+    stable
+    parallel safe   as
 $$
 declare
     result bytea;
@@ -17,7 +20,7 @@ begin
              select st_transform(st_tileenvelope(z, x, y), 102039) as geom),
          s as (
              select st_intersection(b.geom, n.rast) as geom
-             from nlcd n
+             from nlcd10 n
                       join b on st_intersects(b.geom, n.rast)),
          m as (
              select st_asmvtgeom(st_transform((s.geom).geom, 3857),
@@ -26,13 +29,10 @@ begin
              from s,
                   b
              where (s.geom).geom && b.geom)
-    select st_asmvt(m, 'public.nlcd')
+    select st_asmvt(m, 'public.nlcd10')
     into result
     from m;
 
     return result;
 end;
-$$
-    language 'plpgsql'
-    stable
-    parallel safe;
+$$;

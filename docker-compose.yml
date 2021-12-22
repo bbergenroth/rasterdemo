@@ -31,5 +31,11 @@ services:
       - 7800:7800
     env_file:
       - ./db/.env
+  mbtileserver:
+    image: consbio/mbtileserver
+    ports:
+      - 8000:8000
+    volumes:
+      - ./tmp/mbtiles:/tilesets
 volumes:
   pgdata:
