@@ -19,7 +19,7 @@ services:
       - ./db/scripts:/docker-entrypoint-initdb.d
       - pgdata:/var/lib/postgres/data
   web:
-    image: nginx
+    build: ./web
     ports:
       - 80:80
     volumes:
@@ -31,6 +31,8 @@ services:
       - 7800:7800
     env_file:
       - ./db/.env
+    depends_on:
+      - db
   mbtileserver:
     image: consbio/mbtileserver
     ports:
