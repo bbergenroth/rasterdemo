@@ -6,7 +6,7 @@ services:
     volumes:
       - ./cmd/bin:/opt/bin
       - ./tmp/:/data
-    command: tail -f /dev/null
+    command: rio glui /data/nlcdlc2019cogeo.tif
     ports:
       - 8080:8080
   db:
