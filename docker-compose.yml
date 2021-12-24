@@ -33,6 +33,16 @@ services:
       - ./db/.env
     depends_on:
       - db
+  cache:
+    image: eeacms/varnish
+    ports:
+      - "8888:6081"
+    environment:
+      BACKENDS: "raster_tile_1:7800"
+      PARAM_VALUE: "-p default_ttl=6000"
+      VARNISH_SIZE: "2G"
+    depends_on:
+      - tile
   mbtileserver:
     image: consbio/mbtileserver
     ports:
