@@ -1,4 +1,4 @@
-###[Cloud Optimized GeoTiff](https://www.cogeo.org/)
+### [Cloud Optimized GeoTiff](https://www.cogeo.org/)
 
 Download and extract raster file to /tmp:
 
@@ -11,7 +11,7 @@ Create a Cloud Optimized GeoTiff with [gdal](https://gdal.org/):
 
 [Check it out!](http://localhost:8080/index.html)
 
-###[MBTiles](https://docs.mapbox.com/help/glossary/mbtiles/)
+### [MBTiles](https://docs.mapbox.com/help/glossary/mbtiles/)
 
 Download and merge some rasters:
 
@@ -32,7 +32,7 @@ Create mbtiles and overviews
 
 [Check it out!](http://localhost/services/FLEP8/map)
 
-###[PostgreSQL/PostGIS](https://postgis.net/)
+### [PostgreSQL/PostGIS](https://postgis.net/)
 
 Load into postgresql (load.py is a wrapper for [raster2pgsql](https://postgis.net/docs/using_raster_dataman.html#RT_Raster_Loader)):
 
