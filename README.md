@@ -22,15 +22,15 @@ Download and merge some rasters:
 
 Merge them together, adding alpha channel to mask no data value
 
-    gdalbuildvrt FLEP8.vrt FLEP8_CA.tif FLEP8_NV.tif
-    gdalwarp -dstalpha FLEP8.vrt FLEP8.tif -co COMPRESS=LZW
+    gdalbuildvrt tmp/FLEP8.vrt tmp/FLEP8_CA.tif tmp/FLEP8_NV.tif
+    gdalwarp -dstalpha tmp/FLEP8.vrt tmp/FLEP8.tif -co COMPRESS=LZW
 
 Create mbtiles and overviews
 
-    gdal_translate -scale FLEP8.tif FLEP8.mbtiles -of MBTILES
-    gdaladdo -r average FLEP8.mbtiles 2 4 8 16
+    gdal_translate -scale tmp/FLEP8.tif tmp/mbtiles/FLEP8.mbtiles -of MBTILES
+    gdaladdo -r average tmp/mbtiles/FLEP8.mbtiles 2 4 8 16 32 64 128
 
-[Check it out!](http://localhost/services/FLEP8/map)
+[Check it out!](http://localhost:8000/services/FLEP8/map)
 
 ### [PostgreSQL/PostGIS](https://postgis.net/)
 
