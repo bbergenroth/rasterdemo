@@ -9,6 +9,8 @@ Create a Cloud Optimized GeoTiff with [gdal](https://gdal.org/):
 
     docker-compose run --rm cmd gdalwarp -t_srs EPSG:4326 -of COG -co COMPRESS=LZW -dstnodata 0 /data/nlcd_2019_land_cover_l48_20210604.img /data/nlcdlc2019cogeo.tif
 
+nlcd_2019_land_cover_l48_20210604 is **32GB**, nlcdlc2019cogeo.tif is **1.3GB**.
+
 To view in QGIS:
 
     Layer -> Add Layer -> Add Raster Layer
@@ -28,13 +30,15 @@ Download and merge some rasters:
 
 Merge them together, adding alpha channel to mask no data value:
 
-    gdalbuildvrt tmp/FLEP8.vrt tmp/FLEP8_CA.tif tmp/FLEP8_NV.tif
-    gdalwarp -dstalpha tmp/FLEP8.vrt tmp/FLEP8.tif -co COMPRESS=LZW
+    docker-compose run --rm cmd gdalbuildvrt /data/FLEP8.vrt /data/FLEP8_CA.tif /data/FLEP8_NV.tif
+    docker-compose run --rm cmd gdalwarp -dstalpha /data/FLEP8.vrt /data/FLEP8.tif -co COMPRESS=LZW
 
 Create mbtiles and overviews:
 
-    gdal_translate -scale tmp/FLEP8.tif tmp/mbtiles/FLEP8.mbtiles -of MBTILES
-    gdaladdo -r average tmp/mbtiles/FLEP8.mbtiles 2 4 8 16 32 64 128
+    docker-compose run --rm cmd gdal_translate -scale /data/FLEP8.tif /data/mbtiles/FLEP8.mbtiles -of MBTILES
+    docker-compose run --rm cmd gdaladdo -r average /data/mbtiles/FLEP8.mbtiles 2 4 8 16 32 64 128
+
+FLEP8_CA.tif is **1.7GB**, FLEP8_NV.tif is **1.3GB**, FLEP8.mbtiles is **431MB**.
 
 [Check it out!](http://localhost:8000/services/FLEP8/map)
 
