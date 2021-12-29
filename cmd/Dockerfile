@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 FROM osgeo/gdal:latest
 
 RUN apt-get update \

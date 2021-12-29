@@ -36,11 +36,9 @@ services:
   cache:
     image: eeacms/varnish
     ports:
-      - "8888:6081"
-    environment:
-      BACKENDS: "raster_tile_1:7800"
-      PARAM_VALUE: "-p default_ttl=6000"
-      VARNISH_SIZE: "2G"
+      - 8888:6081
+    env_file:
+      - ./web/.env
     depends_on:
       - tile
   mbtileserver:
