@@ -7,7 +7,7 @@ Download and extract raster file to /tmp:
 
 Create a Cloud Optimized GeoTiff with [gdal](https://gdal.org/):
 
-    docker-compose run --rm cmd gdalwarp -t_srs EPSG:4326 -of COG -co COMPRESS=LZW -dstnodata 0 /data/nlcd_2019_land_cover_l48_20210604.img /data/nlcdlc2019cogeo.tif
+    docker-compose run --rm cmd gdalwarp -t_srs EPSG:3857 -of COG -co COMPRESS=LZW -dstnodata 0 /data/nlcd_2019_land_cover_l48_20210604.img /data/nlcdlc2019cogeo.tif
 
 nlcd_2019_land_cover_l48_20210604 is **32GB**, nlcdlc2019cogeo.tif is **1.3GB**.
 
@@ -17,7 +17,7 @@ To view in QGIS:
     Source Type: Protocol: HTTPS(S),cloud,etc.
     URI: http://localhost/cog/nlcdlc2019cogeo.tif
 
-[Check it out!](http://localhost:8080/index.html)
+Check it out [here](http://localhost:8080/index.html) and [here!](http://localhost/)
 
 ### [MBTiles](https://docs.mapbox.com/help/glossary/mbtiles/)
 
