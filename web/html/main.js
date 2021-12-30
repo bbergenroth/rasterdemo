@@ -7,7 +7,7 @@ import GeoTIFF from 'ol/source/GeoTIFF';
 const source = new GeoTIFF({
   sources: [
     {
-      url: 'http://localhost/cog/nlcdlc2019.tif',
+      url: 'http://localhost/cog/nlcdlc2019cogeo.tif',
     },
   ],
 });
