@@ -11,6 +11,8 @@ Create a Cloud Optimized GeoTiff with [gdal](https://gdal.org/):
 
 nlcd_2019_land_cover_l48_20210604 is **32GB**, nlcdlc2019cogeo.tif is **1.3GB**.
 
+    docker-compose run --rm cmd gdalinfo -noct /data/nlcdlc2019cogeo.tif
+
 To view in QGIS:
 
     Layer -> Add Layer -> Add Raster Layer
@@ -87,3 +89,10 @@ Intersect and area example:
 ![mapped result](xsect.png)
 
 [Check it out!](http://localhost:8888/public.nlcd.html)
+
+###Other interesting uses
+- Dasymetric modeling
+- Flow direction (raindrop/puddle)
+
+###Useful links/references
+[Rasterio](https://rasterio.readthedocs.io/en/latest/) (raster to numpy)
