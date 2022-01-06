@@ -90,9 +90,9 @@ Intersect and area example:
 
 [Check it out!](http://localhost:8888/public.nlcd.html)
 
-###Other interesting uses
+### Other interesting uses
 - Dasymetric modeling
 - Flow direction (raindrop/puddle)
 
-###Useful links/references
+### Useful links/references
 [Rasterio](https://rasterio.readthedocs.io/en/latest/) (raster to numpy)
